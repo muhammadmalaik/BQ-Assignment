@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Heading */
+h1 {
+  font-size: 42px;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #a18cd1, #fbc2eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeSlideDown 1s ease forwards;
+}
+
+/* Input Field */
+input[type="text"] {
+  width: 320px;
+  padding: 14px 18px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+input[type="text"]::placeholder {
+  color: #ccc;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 12px #a29bfe;
+  border: 1px solid #a29bfe;
+}
+
+/* Button */
+button {
+  padding: 12px 26px;
+  font-size: 17px;
+  color: #fff;
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #6c5ce7, 0 0 20px #a29bfe, 0 0 40px #6c5ce7;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #a29bfe, 0 0 60px #6c5ce7;
+}
+
+/* Glassmorphic Card */
+#showRepo {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 1;
+  color: #fff;
+  animation: fadeScaleIn 1.2s ease forwards;
+}
+
+/* Neon Border Animation */
+#showRepo::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #6c5ce7, #a29bfe, #00cec9, #6c5ce7);
+  background-size: 400% 400%;
+  border-radius: 22px;
+  z-index: -1;
+  animation: glowing 12s linear infinite;
+  filter: blur(6px);
+}
