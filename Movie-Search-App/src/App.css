@@ -1,0 +1,328 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c, #000000);
+  color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.app {
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 40px;
+  margin-bottom: 25px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffcc70, #ff8177, #cf556c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.search-bar {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.search-bar input {
+  width: 320px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(255, 204, 112, 0.4);
+}
+
+.search-bar button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ffcc70, #ff8177, #cf556c);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 129, 119, 0.5);
+}
+
+.suggestions {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  width: 320px;
+  max-height: 220px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.suggestions li {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ddd;
+  transition: background 0.3s ease;
+}
+
+.suggestions li:hover {
+  background: rgba(255, 204, 112, 0.15);
+  color: #ffcc70;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.movie-card {
+  background: rgba(30, 30, 30, 0.8);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(255, 204, 112, 0.4);
+}
+
+.movie-card img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+
+.no-image {
+  width: 100%;
+  height: 330px;
+  background: linear-gradient(135deg, #333, #444);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-weight: bold;
+}
+
+.movie-info {
+  padding: 15px;
+}
+
+.movie-info h2 {
+  font-size: 18px;
+  margin: 0 0 6px;
+  font-weight: bold;
+  color: #ffcc70;
+}
+
+.movie-info p {
+  font-size: 14px;
+  margin: 3px 0;
+  color: #bbb;
+}
+
+.overview {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+.no-results {
+  grid-column: 1/-1;
+  font-size: 20px;
+  color: #ff8177;
+  font-weight: bold;
+}
+
+.loading {
+  font-size: 18px;
+  color: #00e5ff;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+.error {
+  font-size: 18px;
+  color: #ff4c4c;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+.suggestions li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ddd;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.suggestions li:hover {
+  background: rgba(255, 204, 112, 0.15);
+  color: #ffcc70;
+  transform: scale(1.02);
+}
+
+.suggestion-img {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.suggestion-no-img {
+  width: 40px;
+  height: 60px;
+  background: #333;
+  color: #aaa;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.suggestion-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.modal {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #000000);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  max-width: 850px;
+  width: 90%;
+  padding: 25px;
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.25);
+  animation: scaleUp 0.3s ease;
+  color: #fff;
+}
+
+.modal-poster {
+  width: 260px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.modal-content {
+  flex: 1;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-content h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffd700, #ffcc70, #e6b800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.modal-content p {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.modal-overview {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.close-btn {
+  align-self: flex-start;
+  margin-top: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffd700, #ffcc70, #e6b800);
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
